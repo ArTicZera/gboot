@@ -111,6 +111,12 @@ ParseCommand:
         cmp     al, '^'
         je      xorCalc
 
+        cmp     al, '&'
+        je      andCalc
+
+        cmp     al, '|'
+        je      orCalc
+
         cmp     al, '*'
         je      mulCalc
 
@@ -255,6 +261,48 @@ xorCalc:
 
         .xorYpos:
                 xor     word [calc], dx
+
+                jmp     nextCalc
+
+andCalc:
+        inc     si
+
+        mov     al, [si]
+
+        cmp     al, 'x'
+        je      .andXpos
+
+        cmp     al, 'y'
+        je      .andYpos
+
+        .andXpos:
+                and     word [calc], cx
+
+                jmp     nextCalc
+
+        .andYpos:
+                and     word [calc], dx
+
+                jmp     nextCalc
+
+orCalc:
+        inc     si
+
+        mov     al, [si]
+
+        cmp     al, 'x'
+        je      .orXpos
+
+        cmp     al, 'y'
+        je      .orYpos
+
+        .orXpos:
+                or      word [calc], cx
+
+                jmp     nextCalc
+
+        .orYpos:
+                or      word [calc], dx
 
                 jmp     nextCalc
 
