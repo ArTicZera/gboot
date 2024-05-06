@@ -1,2 +1,2 @@
 # gboot
-gboot is a small graphical calculator made in 512 bytes
+gboot is a small graphical calculator made in x86 Assembly
